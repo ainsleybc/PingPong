@@ -3,11 +3,13 @@
 ## Go Team HAC!
 
 Note pad
+---
 As a note-taker,
 So I can see notes I may have written,
 I want to see a list of notes
 
 Notes
+---
 As a user,
 So I can remember things
 I wan to be able to create notes
