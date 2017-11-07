@@ -1,5 +1,5 @@
 var Notepad = require('../src/notepad.js');
-var assert = require('../testing/assert.js');
+var expect = require('../testing/expect.js');
 var noteSpy = {
   contents: 'contents'
 };
@@ -7,7 +7,7 @@ var noteSpy = {
 (function(exports) {
   (function() {
     var notepad = new Notepad();
-    assert.isThis(notepad.notes().length).equalTo(0);
+    expect(notepad.notes().length).toEqual(0);
   })();
 })(this);
 
@@ -15,7 +15,7 @@ var noteSpy = {
   (function() {
     var notepad = new Notepad();
     notepad.addNote(noteSpy);
-    assert.isThis(notepad.notes().length).equalTo(1);
-    assert.isThis(notepad.notes()[0].contents).equalTo('contents');
+    expect(notepad.notes().length).toEqual(1);
+    expect(notepad.notes()[0].contents).toEqual('contents');
   })();
 })(this);
