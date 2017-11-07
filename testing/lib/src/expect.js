@@ -20,12 +20,29 @@
 
     return {
 
-      toBeTrue: function () {
-        executeTest({
-          assertion: (!firstArg),
-          errorOperator: (" is not true"),
-          errorType: 'single comparison'
-        });
+      toBe: {
+      // function () {
+
+        // return {
+
+          true: function () {
+            executeTest({
+              assertion: (!firstArg),
+              errorOperator: (" is not true"),
+              errorType: 'single comparison'
+            });
+          },
+
+          instanceOf: function (secondArg) {
+            executeTest({
+              assertion: (firstArg instanceof secondArg),
+              errorOperator: (" to be an instance of "),
+              secondArg: secondArg
+            })
+          }
+
+        // }
+
       },
 
       toEqual: function (secondArg) {
