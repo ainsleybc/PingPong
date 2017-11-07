@@ -4,21 +4,10 @@
   
   function expect(firstArg) {
 
-    function testPassing() {
-      console.log('The test passes!');
-    };
-
     function executeTest(options) {
-      var assertion = options.assertion;
-      var errorOperator = options.errorOperator;
-      var errorType = options.errorType;
-      var secondArg = options.secondArg
-
-      if (options.assertion) {
-        testPassing();
-      } else {
-        throw new Error(errorMessage(errorType, errorOperator, secondArg));
-      }
+      if (!options.assertion) {
+        throw new Error(errorMessage(options.errorType, options.errorOperator, options.secondArg));
+      };
     };
 
     function errorMessage(errorType, errorOperator, secondArg) {

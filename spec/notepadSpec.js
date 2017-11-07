@@ -8,9 +8,9 @@ describe('notepad', function () {
   
   it('instantiates with an empty list of notes', function () {
     var notepad = new Notepad();
-    expect(notepad.notes().length).toEqual(0);
+    expect(notepad.notes().length).toEqual(5);
   });
-
+  
   it('saves a created note', function () {
     var notepad = new Notepad();
     notepad.addNote(noteSpy);
