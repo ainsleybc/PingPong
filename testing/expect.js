@@ -1,26 +1,42 @@
-module.exports = function(firstArg) {
-  return {
-    toBeTrue: function() {
-      if (!firstArg) {
-        throw new Error("Assertion failed: " + firstArg + " is not truthy");
-      } else {
-        console.log('The test passes!');
-      }
-    },
-    toEqual: function(secondArg) {
-      if (firstArg === secondArg) {
-        console.log('The test passes!');
-      } else {
-        throw new Error("Assertion failed: " + firstArg + " is not equal to " + secondArg + '.');
-      }
-    },
-    toNotEqual: function(secondArg) {
-      if (firstArg !== secondArg) {
-        console.log('The test passes!');
-      } else {
-        throw new Error("Assertion failed: " + firstArg + " is equal to " + secondArg + '.');
-      }
+'use strict';
+
+var expect = function (firstArg) {
+
+  function testPassing() {
+    console.log('The test passes!');    
+  }
+
+  function executeTest(options) {
+    if (options.assertion) {
+      testPassing();      
+    } else {
+      throw new Error(options.errorMessage);
     }
-  };
+  }
+  
+  return {
+
+    toBeTrue: function () {
+      executeTest({
+        assertion: (!firstArg),
+        errorMessage: ("Assertion failed: " + firstArg + " is not truthy")
+      });
+    },
+
+    toEqual: function (secondArg) {
+      executeTest({
+        assertion: (firstArg === secondArg),
+        errorMessage: ("Test failed: expected " + firstArg + " to equal " + secondArg + '.')
+      });
+    },
+
+    toNotEqual: function (secondArg) {
+      executeTest({
+        assertion: (firstArg !== secondArg),
+        errorMessage: ("Test failed: expected " + firstArg + " not to equal " + secondArg + '.')
+      });
+    }
+
+  }
 
 };

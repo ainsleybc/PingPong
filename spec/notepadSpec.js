@@ -1,5 +1,5 @@
-var Notepad = require('../src/notepad.js');
-var expect = require('../testing/expect.js');
+'use strict';
+
 var noteSpy = {
   contents: 'contents'
 };

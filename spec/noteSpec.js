@@ -1,5 +1,4 @@
-var Note = require('../src/note.js');
-var expect = require('../testing/expect.js');
+'use strict';
 
 (function(exports) {
   (function(text) {
