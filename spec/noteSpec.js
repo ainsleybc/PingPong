@@ -4,9 +4,9 @@ function assert() {
   return {
     isTrue: function(assertionToCheck) {
       if (!assertionToCheck) {
-        throw new Error("Assertion failed: " + assertionToCheck + " is not truthy");
+        throw new Error("\x1b[31m","Assertion failed: " + assertionToCheck + " is not truthy");
       } else {
-        console.log('The test passes!');
+        console.log("\x1b[32m",'The test passes!');
       }
     },
     isThis: function(firstArg) {
