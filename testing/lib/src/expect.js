@@ -21,9 +21,6 @@
     return {
 
       toBe: {
-      // function () {
-
-        // return {
 
           true: function () {
             executeTest({
@@ -40,8 +37,6 @@
               secondArg: secondArg
             })
           }
-
-        // }
 
       },
 
@@ -70,11 +65,7 @@
       }
     };
   };
-<<<<<<< HEAD
-};
-=======
 
   exports.expect = expect;
 
 })(this);
->>>>>>> 973d3f39e60873fa17cd90238784c9e674cbb3fd
