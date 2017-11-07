@@ -1,42 +1,48 @@
 'use strict';
 
-var expect = function (firstArg) {
+var expect = function(firstArg) {
 
   function testPassing() {
-    console.log('The test passes!');    
+    console.log('The test passes!');
   }
 
   function executeTest(options) {
     if (options.assertion) {
-      testPassing();      
+      testPassing();
     } else {
       throw new Error(options.errorMessage);
     }
   }
-  
+
   return {
 
-    toBeTrue: function () {
+    toBeTrue: function() {
       executeTest({
         assertion: (!firstArg),
-        errorMessage: ("Assertion failed: " + firstArg + " is not truthy")
+        errorMessage: ("Test failed: " + firstArg + " is not true.")
       });
     },
 
-    toEqual: function (secondArg) {
+    toEqual: function(secondArg) {
       executeTest({
         assertion: (firstArg === secondArg),
         errorMessage: ("Test failed: expected " + firstArg + " to equal " + secondArg + '.')
       });
     },
 
-    toNotEqual: function (secondArg) {
+    toNotEqual: function(secondArg) {
       executeTest({
         assertion: (firstArg !== secondArg),
         errorMessage: ("Test failed: expected " + firstArg + " not to equal " + secondArg + '.')
       });
-    }
+    },
 
-  }
+    toInclude: function(secondArg) {
+      executeTest({
+        assertion: (firstArg.includes(secondArg)),
+        errorMessage: ("Test failed: expected " + firstArg + " to contain " + secondArg + ".")
+      });
+    }
+  };
 
 };
