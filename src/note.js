@@ -1,9 +1,12 @@
 function Note(text) {
-  this.content = text;
+  this._content = text;
 }
 Note.prototype.contents = function() {
-  return this.content;
+  return this._content;
 };
 
+Note.prototype.abbreviation = function() {
+  return this._content.slice(0, 20);
+};
 
 module.exports = Note;
