@@ -7,7 +7,6 @@ module.exports = function(firstArg) {
         console.log('The test passes!');
       }
     },
-
     toEqual: function(secondArg) {
       if (firstArg === secondArg) {
         console.log('The test passes!');
