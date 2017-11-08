@@ -1,7 +1,7 @@
 'use strict';
 
-(function (exports) {
-  
+(function(exports) {
+
   function expect(firstArg) {
 
     function executeTest(options) {
@@ -20,7 +20,7 @@
 
     return {
 
-      toBeTrue: function () {
+      toBeTrue: function() {
         executeTest({
           assertion: (!firstArg),
           errorOperator: (" is not true"),
@@ -28,7 +28,7 @@
         });
       },
 
-      toEqual: function (secondArg) {
+      toEqual: function(secondArg) {
         executeTest({
           assertion: (firstArg === secondArg),
           errorOperator: (" to equal "),
@@ -36,7 +36,7 @@
         });
       },
 
-      toNotEqual: function (secondArg) {
+      toNotEqual: function(secondArg) {
         executeTest({
           assertion: (firstArg !== secondArg),
           errorOperator: (" not to equal "),
@@ -44,7 +44,7 @@
         });
       },
 
-      toInclude: function (secondArg) {
+      toInclude: function(secondArg) {
         executeTest({
           assertion: (firstArg.includes(secondArg)),
           errorOperator: (" to contain "),
@@ -53,11 +53,7 @@
       }
     };
   };
-<<<<<<< HEAD
-};
-=======
 
   exports.expect = expect;
 
 })(this);
->>>>>>> 973d3f39e60873fa17cd90238784c9e674cbb3fd

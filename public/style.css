@@ -15,6 +15,7 @@ header {
 
 .sidebar {
   width: 20%;
+  float: left;
   height: 700px;
   border: solid red;
 	border-bottom: none;
@@ -41,10 +42,31 @@ header {
 	border: solid red;
 }
 
-.hello {
+#show-area {
+	margin-left: 20%;
+	height: inherit;
+	width: inherit;
+	border: solid blue;
+	border-top: dashed green;
+}
+
+.container {
+	height: 700px;
+	width: inherit%;
+}
+
+.text-edit {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 30px;
+	height: inherit;
+	width: inherit;
+	background-color: #E9E901;
+}
+
+/*.hello {
   animation: blinker 0.7s linear infinite;
 }
 
 @keyframes blinker {
   50% { opacity: 0; }
-}
+}*/

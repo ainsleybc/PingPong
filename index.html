@@ -3,16 +3,35 @@
 
 <head>
   <link href="public/style.css" rel="stylesheet" type="text/css">
+  <script>
+    // document.getElementById("button").addEventListener("click", function() {
+    //   console.log('hello');
+    function myFunction() {
+      var l = document.getElementById('test');
+      if (l.textContent === 'button clicked') {
+        l.innerHTML = 'Welcome to our Notepad app!'
+      } else {
+        l.innerHTML = 'button clicked';
+      }
+      var j = document.getElementById('show-area');
+      // j.innerHTML = "";
+    }
+  </script>
+
 </head>
 
 <body class='body'>
   <header>
-    <div class='hello'>Welcome to our Notepad app!</div>
+    <div id='test' class='hello'>Welcome to our Notepad app!</div>
   </header>
-  <div class='sidebar'>
-    <div class='sidebar-header'>
-      <div class='hello'> This is our navigation sidebar</div>
+  <div class='container'>
+    <div class='sidebar'>
+      <div class='sidebar-header'>
+        <div class='hello'> This is our navigation sidebar</div>
+      </div>
+      <button id='button' onclick="myFunction()"> hello</button>
     </div>
+    <div id='show-area'><textarea class='text-edit' id='my-text'></textarea></div>
   </div>
   <script src="src/note.js"></script>
   <script src="src/notepad.js"></script>
