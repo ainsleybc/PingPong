@@ -2,7 +2,7 @@
 
 (function (exports) {
   
-  function expect(firstArg) {
+  exports.expect = function (firstArg) {
 
     function executeTest(options) {
       if (!options.assertion) {
@@ -18,54 +18,53 @@
       }
     };
 
-    return {
-
-      toBe: {
-
-          true: function () {
-            executeTest({
-              assertion: (!firstArg),
-              errorOperator: (" is not true"),
-              errorType: 'single comparison'
-            });
-          },
-
-          instanceOf: function (secondArg) {
-            executeTest({
-              assertion: (firstArg instanceof secondArg),
-              errorOperator: (" to be an instance of "),
-              secondArg: secondArg
-            })
-          }
-
-      },
-
-      toEqual: function (secondArg) {
-        executeTest({
-          assertion: (firstArg === secondArg),
-          errorOperator: (" to equal "),
-          secondArg: secondArg
-        });
-      },
-
-      toNotEqual: function (secondArg) {
-        executeTest({
-          assertion: (firstArg !== secondArg),
-          errorOperator: (" not to equal "),
-          secondArg: secondArg
-        });
-      },
-
-      toInclude: function (secondArg) {
-        executeTest({
-          assertion: (firstArg.includes(secondArg)),
-          errorOperator: (" to contain "),
-          secondArg: secondArg
-        });
-      }
+    function toEqual (secondArg) {
+      executeTest({
+        assertion: (firstArg === secondArg),
+        errorOperator: (" to equal "),
+        secondArg: secondArg
+      });
     };
-  };
 
-  exports.expect = expect;
+    function toNotEqual (secondArg) {
+      executeTest({
+        assertion: (firstArg !== secondArg),
+        errorOperator: (" not to equal "),
+        secondArg: secondArg
+      });
+    };
+
+    function toInclude (secondArg) {
+      executeTest({
+        assertion: (firstArg.includes(secondArg)),
+        errorOperator: (" to contain "),
+        secondArg: secondArg
+      });
+    };
+
+    function truthy () {
+      executeTest({
+        assertion: (!firstArg),
+        errorOperator: (" is not true"),
+        errorType: 'single comparison'
+      });
+    };
+    
+    function instanceOf (secondArg) {
+      executeTest({
+        assertion: (firstArg instanceof secondArg),
+        errorOperator: (" to be an instance of "),
+        secondArg: secondArg
+      })
+    };
+    
+    return {
+      toEqual: toEqual,
+      toNotEqual: toNotEqual,
+      toInclude: toInclude,
+      toBe: { true: truthy, instanceOf: instanceOf }
+    }
+
+  };
 
 })(this);
