@@ -11,7 +11,7 @@ Notepad.prototype.notes = function() {
 };
 Notepad.prototype.listHTML = function() {
   var html = '<ul>';
-  for (var i = 0; i < this._listOfNotes.length; i++) {
+  for (var i = 0; i < this.notes().length; i++) {
     html += ('<li>' + this.notes()[i].abbreviation() + '</li>');
   }
   return html + '</ul>';

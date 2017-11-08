@@ -73,10 +73,10 @@ header {
 	border-radius: 8px;
 }
 
-.hello {
+/*.hello {
   animation: blinker 5s linear;
 }
 
 @keyframes blinker {
   50% { opacity: 0; }
-}
+}*/

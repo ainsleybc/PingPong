@@ -8,7 +8,7 @@ describe('notepad', function() {
 
   it('instantiates with an empty list of notes', function() {
     var notepad = new Notepad();
-    expect(notepad.notes().length).toEqual(5);
+    expect(notepad.notes().length).toEqual(0);
   });
 
   it('saves a created note', function() {
@@ -21,19 +21,29 @@ describe('notepad', function() {
   it('prints a list notes', function() {
     var notepad = new Notepad();
     notepad.addNote({
-      abbreviation: 'hello'
+      abbreviation: function() {
+        return 'hello';
+      }
     });
     notepad.addNote({
-      abbreviation: 'my'
+      abbreviation: function() {
+        return 'my';
+      }
     });
     notepad.addNote({
-      abbreviation: 'name'
+      abbreviation: function() {
+        return 'name';
+      }
     });
     notepad.addNote({
-      abbreviation: 'is'
+      abbreviation: function() {
+        return 'is';
+      }
     });
     notepad.addNote({
-      abbreviation: 'Canace'
+      abbreviation: function() {
+        return 'Canace';
+      }
     });
     expect(notepad.listHTML()).toEqual('<ul><li>hello</li><li>my</li><li>name</li><li>is</li><li>Canace</li></ul>');
   });

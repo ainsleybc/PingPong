@@ -8,5 +8,5 @@ Note.prototype.contents = function() {
 };
 
 Note.prototype.abbreviation = function() {
-  return this._content.slice(0, 20) + '...';
+  return this._content.slice(0, 20);
 };
