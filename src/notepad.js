@@ -12,7 +12,7 @@ Notepad.prototype.notes = function() {
 Notepad.prototype.listHTML = function() {
   var html = '<ul>';
   for (var i = 0; i < this._listOfNotes.length; i++) {
-    html += ('<li>' + this.notes()[i].abbreviation + '</li>');
+    html += ('<li>' + this.notes()[i].abbreviation() + '</li>');
   }
   return html + '</ul>';
 };

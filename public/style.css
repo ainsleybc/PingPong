@@ -17,10 +17,8 @@ header {
   width: 20%;
   float: left;
   height: 700px;
-  border: solid red;
-	border-bottom: none;
-	border-left: none;
-	border-top: none;
+  border-right: solid red;
+	box-sizing: border-box;
 }
 
 .sidebar-header {
@@ -43,30 +41,42 @@ header {
 }
 
 #show-area {
+	position: relative;
 	margin-left: 20%;
-	height: inherit;
-	width: inherit;
-	border: solid blue;
-	border-top: dashed green;
+	height: 100%;
+	width: 80%;
 }
 
 .container {
 	height: 700px;
-	width: inherit;
+	width: 100%;
 }
 
 .text-edit {
+	position: absolute;
 	font-family: "Courier New", Courier, monospace;
 	font-size: 30px;
-	height: inherit;
-	width: inherit;
+	height: 100%;
+	width: 100%;
 	background-color: #E9E901;
+	resize: none;
+	box-sizing: border-box;
+
 }
 
-/*.hello {
-  animation: blinker 0.7s linear infinite;
+#navBar {
+	width: 100%;
+	height: inherit;
+}
+
+#button {
+	border-radius: 8px;
+}
+
+.hello {
+  animation: blinker 5s linear;
 }
 
 @keyframes blinker {
   50% { opacity: 0; }
-}*/
+}
