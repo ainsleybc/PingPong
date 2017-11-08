@@ -5,28 +5,17 @@
   <link href="public/style.css" rel="stylesheet" type="text/css">
   <script src="src/note.js"></script>
   <script src="src/notepad.js"></script>
+  <script src='src/notepadController.js'></script>
   <script>
-    // document.getElementById("button").addEventListener("click", function() {
-    //   console.log('hello');
-    var notepad = new Notepad();
-
-    function myFunction() {
-      var j = document.getElementById('show-area');
-      j.innerHTML = "<textarea class='text-edit' id='my-text'></textarea>";
-    }
-
-    function createNote() {
-      var text = document.getElementById('my-text');
-      notepad.addNote(new Note(text.value));
-      myFunction();
-      var navBar = document.getElementById('navBarText');
-      navBar.innerHTML = notepad.listHTML();
+    var notepadController;
+    window.onload = function() {
+      notepadController = new NotepadController(body);
     }
   </script>
 
 </head>
 
-<body class='body'>
+<body class='body' id='body'>
   <header>
     <div id='test' class='hello'>Welcome to our Notepad app!</div>
   </header>
@@ -36,8 +25,8 @@
         <div class='hello'> This is our navigation sidebar</div>
       </div>
       <div id='navBar'>
-        <button id='button' name='createNote' onclick="myFunction()">Create Note</button>
-        <button id='button' name='submitNote' onclick="createNote()">Submit</button>
+        <button id='button' name='createNote' onclick="notepadController.createTextArea('show-area')">Create Note</button>
+        <button id='button' name='submitNote' onclick="notepadController.createNote()">Submit</button>
         <scan id='navBarText'></scan>
       </div>
     </div>

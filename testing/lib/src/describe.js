@@ -1,4 +1,4 @@
-(function (exports) {
+(function(exports) {
 
   function describe(string, callback) {
 

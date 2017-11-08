@@ -21,19 +21,29 @@ describe('notepad', function() {
   it('prints a list notes', function() {
     var notepad = new Notepad();
     notepad.addNote({
-      abbreviation: 'hello'
+      abbreviation: function() {
+        return 'hello';
+      }
     });
     notepad.addNote({
-      abbreviation: 'my'
+      abbreviation: function() {
+        return 'my';
+      }
     });
     notepad.addNote({
-      abbreviation: 'name'
+      abbreviation: function() {
+        return 'name';
+      }
     });
     notepad.addNote({
-      abbreviation: 'is'
+      abbreviation: function() {
+        return 'is';
+      }
     });
     notepad.addNote({
-      abbreviation: 'Canace'
+      abbreviation: function() {
+        return 'Canace';
+      }
     });
     expect(notepad.listHTML()).toEqual('<ul><li>hello</li><li>my</li><li>name</li><li>is</li><li>Canace</li></ul>');
   });
