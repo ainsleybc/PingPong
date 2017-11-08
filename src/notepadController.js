@@ -12,7 +12,7 @@ function NotepadController(containerId) {
 
   NotepadController.prototype.createTextArea = function(elementId) {
     var j = document.getElementById(elementId);
-    j.innerHTML = "<textarea class='text-edit' id='my-text'></textarea>";
+    j.innerHTML = '<textarea class="text-edit" id="my-text"></textarea>';
   };
 
   NotepadController.prototype.createNote = function() {

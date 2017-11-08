@@ -1,21 +1,18 @@
-'use strict';
+// 'use strict';
 
 function convertPlainText(content) {
   return content.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 describe('notepadController', function() {
-  //
-  // it('instantiates a new notepad', function() {
-  //   new NotepadController('test-div');
-  //   expect(notepad).toBe.instanceOf(Notepad);
-  // });
+
+  it('instantiates a new notepad', function() {
+    var notepadController = new NotepadController('test-div');
+    expect(notepad).toBe.instanceOf(Notepad);
+  });
 
   it('displays the note creation form', function() {
-    new NotepadController('test-div');
+    var notepadController = new NotepadController('test-div');
 
-    // function convertPlainText(content) {
-    //   return content.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    // }
     var testDouble = document.getElementById('test-div');
     var form = '<form><input type="text" id="webnote" name="webnote"><input type="submit" id="add-note" value="add-note"></form>';
     testDouble.innerHTML = form;
@@ -25,9 +22,9 @@ describe('notepadController', function() {
   it('displays a text area when the createNote button is clicked', function() {
     var notepadController = new NotepadController('test-div');
     notepadController.createTextArea('test-div');
-    var html = document.getElementById('test-div').innerHTML;
-    var textArea = "<textarea class='text-edit' id='my-text'></textarea>";
-    expect(convertPlainText(html)).toEqual(convertPlainText(textArea));
+    var html = convertPlainText(document.getElementById('test-div').innerHTML);
+    var textArea = convertPlainText('<textarea class="text-edit" id="my-text"></textarea>');
+    expect(html).toEqual(textArea);
   });
 
 });
