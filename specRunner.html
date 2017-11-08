@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
+  <head>
+      <link rel="stylesheet" href="testing/lib/css/styles.css">
+  </head>
+  <body>
 
-<head>
+    <div id="test-div" class="hidden"></div>      
+    <section id="spec-runner"></section>
+    
+    <script src="testing/lib/src/describe.js"></script>     
+    <script src="testing/lib/src/it.js"></script>
+    <script src="testing/lib/src/expect.js"></script>    
 
-</head>
+    <!-- source files -->
+    <script src="src/note.js"></script>
+    <script src="src/notepad.js"></script>
+    <script src="src/notepadController.js"></script>    
 
-<body>
-
-  <section id="spec-runner"></section>
-
-  <script src="testing/describe.js"></script>
-  <script src="testing/it.js"></script>
-  <script src="testing/expect.js"></script>
-
-  <script src="src/note.js"></script>
-  <script src="src/notepad.js"></script>
-
-  <script src="spec/notepadSpec.js"></script>
-  <script src="spec/noteSpec.js"></script>
-  <script src="spec/webSpec.js"></script>
-
-
-</body>
-
+    <!-- specs -->
+    <script src="spec/notepadSpec.js"></script>
+    <script src="spec/noteSpec.js"></script>
+    <script src="spec/notepadControllerSpec.js"></script>    
+    <script src="spec/webSpec.js"></script>
+    
+  </body>
 </html>
