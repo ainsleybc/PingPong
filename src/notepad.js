@@ -1,18 +1,33 @@
 'use strict';
 
-function Notepad() {
-  this._listOfNotes = [];
-}
-Notepad.prototype.addNote = function(note) {
-  this._listOfNotes.push(note);
-};
-Notepad.prototype.notes = function() {
-  return this._listOfNotes;
-};
-Notepad.prototype.listHTML = function() {
-  var html = '<ul>';
-  for (var i = 0; i < this.notes().length; i++) {
-    html += ('<li>' + this.notes()[i].abbreviation() + '</li>');
-  }
-  return html + '</ul>';
-};
+(function (exports) {
+
+  exports.Notepad = function () {
+    
+    var _listOfNotes = [];
+    
+    function addNote(note) {
+      _listOfNotes.push(note);
+    };
+    
+    function notes() {
+      return _listOfNotes;
+    };
+
+    function listHTML() {
+      var html = '<ul>';
+      for (var i = 0; i < notes().length; i++) {
+        html += ('<li>' + notes()[i].abbreviation() + '</li>');
+      }
+      return html + '</ul>';
+    };
+
+    return {
+      addNote: addNote,
+      notes: notes,
+      listHTML: listHTML
+    };
+
+  };
+
+})(this);

@@ -1,12 +1,24 @@
 'use strict';
 
-function Note(text) {
-  this._content = text;
-}
-Note.prototype.contents = function() {
-  return this._content;
-};
+(function (exports) {
 
-Note.prototype.abbreviation = function() {
-  return this._content.slice(0, 20);
-};
+  exports.Note = function (text) {
+
+    var _content = text;
+
+    function contents() {
+      return _content;
+    };
+
+    function abbreviation() {
+      return _content.slice(0, 20);
+    };
+
+    return {
+      contents: contents,
+      abbreviation: abbreviation
+    };
+
+  }
+
+})(this);
