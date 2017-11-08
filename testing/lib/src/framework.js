@@ -3,34 +3,36 @@
 (function (exports) {
    
   var _html = ''
-  var container = document.getElementById('spec-runner');
-  var describeCounter = 0;
+  var _describeCounter = 0;
+  var _passedTestCount = 0;
+  var _failedTestCount = 0;
+  var _container = document.getElementById('spec-runner');
   
   exports.output = {
-
-    testCount: 0,
      
     startDescribe: function (text, counter) {
-      describeCounter++;
+      _describeCounter++;
       _html += '<article><p class="describe_block">' + text + '</p>';
     },
 
     endDescribe: function (counter) {
-      describeCounter--;
+      _describeCounter--;
       _html += '</article>';
-      if (describeCounter === 0) output.renderPage();
+      if (_describeCounter === 0) output._renderPage();
     },
     
     addPassingTest: function (text) {
-      _html += "<div class='passes'><p>" + text + "</p></div>";
+      _html += "<div class='passes'><p>it " + text + "</p></div>";
+      _passedTestCount++;
     },
 
     addFailedTest: function (text, err) {
-      _html += "<div class='fails'><p>" + text + "</p><p>" + err + "</p></div>";
+      _html += "<div class='fails'><p>it " + text + "</p><p>" + err + "</p></div>";
+      _failedTestCount++;
     },
 
-    renderPage: function () {
-      container.innerHTML += _html;
+    _renderPage: function () {
+      _container.innerHTML += _html;
       _html = '';
     }
 

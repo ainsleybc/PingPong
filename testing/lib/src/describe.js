@@ -1,9 +1,11 @@
 (function (exports) {
   
   exports.describe = function (string, callback) {
-    output.startDescribe(string)
+
+    output.startDescribe(string);
     callback();
-    output.endDescribe()
+    output.endDescribe();
+
   }
 
 })(this);
