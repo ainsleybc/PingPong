@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <html>
+  <head>
 
-<head>
-  <link href="public/style.css" rel="stylesheet" type="text/css">
-  <script src="src/note.js"></script>
-  <script src="src/notepad.js"></script>
-  <script src='src/notepadController.js'></script>
-  <script>
-    var notepadController;
-    window.onload = function() {
-      notepadController = new NotepadController('body');
-    }
-  </script>
+    <link href="public/style.css" rel="stylesheet" type="text/css">
+    
+    <script src="src/note.js"></script>
+    <script src="src/notepad.js"></script>
+    <script src='src/notepadController.js'></script>
 
-</head>
+    <script>
+      var notepadController;
+      window.onload = function() {
+        notepadController = new NotepadController('body');
+      }
+    </script>
 
-<body class='body' id='body'>
-  <header>
-    <div id='test' class='hello'>Welcome to our Notepad app!</div>
-  </header>
-  <div class='container'>
-    <div class='sidebar'>
-      <div class='sidebar-header'>
-        <div class='hello'> This is our navigation sidebar</div>
+  </head>
+  <body class='body' id='body'>
+    <header>
+      <div id='test' class='hello'>Welcome to our Notepad app!</div>
+    </header>
+    <div class='container'>
+      <div class='sidebar'>
+        <div class='sidebar-header'>
+          <div class='hello'> This is our navigation sidebar</div>
+        </div>
+        <div id='navBar'>
+          <button id='button' name='createNote' onclick="notepadController.createTextArea('show-area')">Create Note</button>
+          <button id='button' name='submitNote' onclick="notepadController.createNote()">Submit</button>
+          <scan id='navBarText'></scan>
+        </div>
       </div>
-      <div id='navBar'>
-        <button id='button' name='createNote' onclick="notepadController.createTextArea('show-area')">Create Note</button>
-        <button id='button' name='submitNote' onclick="notepadController.createNote()">Submit</button>
-        <scan id='navBarText'></scan>
-      </div>
+      <div id='show-area'></div>
     </div>
-    <div id='show-area'></div>
-  </div>
-
-</body>
-
+  </body>
 </html>
