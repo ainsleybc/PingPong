@@ -38,6 +38,8 @@ header {
 	width: 92%;
 	margin: 60px;
 	border: solid red;
+	/*animation: blinker 0.4s infinite;*/
+
 }
 
 #show-area {
@@ -61,8 +63,8 @@ header {
 	background-color: #E9E901;
 	resize: none;
 	box-sizing: border-box;
-
 }
+.text-edit:focus {outline:0;}
 
 #navBar {
 	width: 100%;
@@ -73,10 +75,8 @@ header {
 	border-radius: 8px;
 }
 
-/*.hello {
-  animation: blinker 5s linear;
-}
+
 
 @keyframes blinker {
   50% { opacity: 0; }
-}*/
+}
