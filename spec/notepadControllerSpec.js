@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 function convertPlainText(content) {
   return content.replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -26,6 +26,19 @@ describe('notepadController', function() {
     var textArea = convertPlainText('<textarea class="text-edit" id="my-text"></textarea>');
     expect(html).toEqual(textArea);
   });
+
+  it('adds a new note to the notepad when the submit button is clicked', function() {
+    var notepadController = new NotepadController('test-div');
+    submitNoteHTML()
+    notepadController.createTextArea('test-div');
+    var textBox = document.getElementById('my-text');
+    textBox.value = 'hello my name is canace';
+    expect(textBox.value).toEqual('hello my name is canace');
+
+    var button = document.getElementsById('button');
+    button.click();
+  });
+
 
 });
 
