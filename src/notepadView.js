@@ -1,20 +1,21 @@
 'use strict';
 
-(function (exports) {
+(function(exports) {
 
-  exports.NotepadView = function (notepad) {
-    
+  exports.NotepadView = function(notepad) {
+
     function renderFullList() {
-      var html = '<ul>';
+      var html = '<ol>';
       for (var i = 0; i < notepad.notes().length; i++) {
-        html += ('<li>' + notepad.notes()[i].abbreviation() + '</li>');
+        html += ('<li><a id="note' + i + '" href="#' + i + '">' + notepad.notes()[i].abbreviation() + '</a></li>');
       }
-      return html + '</ul>';
-    };
+      return html + '</ol>';
+    }
 
     function renderSingleNote(index) {
       var noteText = notepad.notes()[index].contents();
-      return '<textarea class="text-edit" id="my-text" value="' + noteText + '"></textarea>'
+      console.log(noteText);
+      return '<textarea class="text-edit" id="my-text" value="' + noteText + '"></textarea>';
     }
 
     return {

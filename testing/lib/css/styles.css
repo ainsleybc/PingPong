@@ -1,22 +1,22 @@
 body {
-  background-color: #757780;
+  background-color: black;
 }
 .hidden {
   display: none;
 }
 
 .describe_block{
-  color: #D2CCA1;
+  color: white;
   font-family: Arial Black;
 }
 
 .passes{
-  color: #C8FFBE;
+  color: lime;
   font-family: Arial;
 }
 
 .fails{
-  color: #89023E;
+  color: red;
   font-family: Arial;
 }
 

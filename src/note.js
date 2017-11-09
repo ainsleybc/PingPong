@@ -11,7 +11,8 @@
     }
 
     function abbreviation() {
-      return _content.slice(0, 20);
+      if (_content.length > 20) return (_content.slice(0, 17) + '...');
+      return _content;
     }
 
     return {
