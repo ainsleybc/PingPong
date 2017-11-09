@@ -2,11 +2,11 @@
 
 describe('notepadController', function() {
   //
-  // it('instantiates a new notepad', function() {
-  //   new NotepadController('test-div');
-  //   expect(notepad).toBe.instanceOf(Notepad);
-  // });
-  //
+  it('instantiates a new notepad', function() {
+    new NotepadController('test-div');
+    expect(notepad).toBe.instanceOf(Notepad);
+  });
+
   // it('displays the note creation form', function() {
   //   new NotepadController('test-div');
   //
@@ -21,7 +21,7 @@ describe('notepadController', function() {
   it('displays a text area when the createNote button is clicked', function() {
     var notepadController = new NotepadController('test-div');
     notepadController.createTextArea('test-div');
-    expect(document.getElementById('test-div').innerHTML).toEqual("<textarea class='text-edit' id='my-text'></textarea>");
+    expect(document.getElementById('test-div').innerHTML).toEqual('<textarea class="text-edit" id="my-text"></textarea>');
   });
 
 });

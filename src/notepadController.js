@@ -18,8 +18,7 @@ function NotepadController(containerId) {
   NotepadController.prototype.createNote = function() {
     var text = document.getElementById('my-text');
     notepad.addNote(new Note(text.value));
-    this.createTextArea();
-    var navBar = document.getElementById('navBarText');
+    var navBar = document.getElementById("navBarText");
     navBar.innerHTML = notepad.listHTML();
   };
 }
