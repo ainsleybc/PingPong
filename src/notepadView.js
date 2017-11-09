@@ -12,8 +12,14 @@
       return html + '</ul>';
     };
 
+    function renderSingleNote(index) {
+      var noteText = notepad.notes()[index].contents();
+      return '<textarea class="text-edit" id="my-text" value="' + noteText + '"></textarea>'
+    }
+
     return {
-      renderFullList: renderFullList
+      renderFullList: renderFullList,
+      renderSingleNote: renderSingleNote
     }
 
   }
