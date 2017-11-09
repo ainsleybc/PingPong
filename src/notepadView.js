@@ -14,8 +14,7 @@
 
     function renderSingleNote(index) {
       var noteText = notepad.notes()[index].contents();
-      console.log(noteText);
-      return '<textarea class="text-edit" id="my-text" value="' + noteText + '"></textarea>';
+      return '<textarea class="text-edit" id="my-text">' + noteText + '</textarea>';
     }
 
     return {

@@ -18,7 +18,7 @@ describe('notepadView', function() {
     var view = new NotepadView(notepad);
     var note = new Note('ThisIsTwentySevenCharacters');
     notepad.addNote(note);
-    expect(view.renderSingleNote(0)).toEqual('<textarea class="text-edit" id="my-text" value="' + note.contents() + '"></textarea>');
+    expect(view.renderSingleNote(0)).toEqual('<textarea class="text-edit" id="my-text">' + note.contents() + '</textarea>');
   });
 
   it
