@@ -12,17 +12,12 @@
       return html + '</ul>';
     };
 
-    function showNote(number){
-      return notepad.notes()[number];
-    }
-
     return {
-      renderFullList: renderFullList,
-      showNote: showNote, 
-    }
+      renderFullList: renderFullList
+    };
 
 
 
-  }
+  };
 
 })(this);

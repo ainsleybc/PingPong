@@ -36,10 +36,9 @@ function NotepadController(containerId) {
   };
 
   NotepadController.prototype.showNote = function (number) {
-  var notepadview = new NotepadView(notepad);
   document
     .getElementById("note-area")
-    .innerText = notepadview.showNote(number);
+    .innerText = notepad.showNote(number);
   };
 
 }
