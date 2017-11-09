@@ -1,24 +1,34 @@
 'use strict';
+(function(exports) {
+  exports.NotepadController = function(containerId) {
 
-var notepad;
+    var container = document.getElementById(containerId);
+    // var form = '<form><input type="text" id="webnote" name="webnote"><input type="submit" id="add-note" value="add-note"></form>';
 
-function NotepadController(containerId) {
+    var notepad = new Notepad();
+    // container.innerHTML = form;
 
-  var container = document.getElementById(containerId);
-  // var form = '<form><input type="text" id="webnote" name="webnote"><input type="submit" id="add-note" value="add-note"></form>';
+    function createTextArea(elementId) {
+      var j = document.getElementById(elementId);
+      j.innerHTML = '<textarea class="text-edit" id="my-text"></textarea>';
+    }
 
-  notepad = new Notepad();
-  // container.innerHTML = form;
+    function createNote() {
+      var text = document.getElementById('my-text');
+      notepad.addNote(new Note(text.value));
+      createTextArea('show-area');
+      var navBar = document.getElementById('navBarText');
+      navBar.innerHTML = notepad.listHTML();
+    }
 
-  NotepadController.prototype.createTextArea = function(elementId) {
-    var j = document.getElementById(elementId);
-    j.innerHTML = '<textarea class="text-edit" id="my-text"></textarea>';
+    function notesList() {
+      return notepad.notes();
+    }
+
+    return {
+      notesList: notesList,
+      createTextArea: createTextArea,
+      createNote: createNote
+    };
   };
-
-  NotepadController.prototype.createNote = function() {
-    var text = document.getElementById('my-text');
-    notepad.addNote(new Note(text.value));
-    var navBar = document.getElementById("navBarText");
-    navBar.innerHTML = notepad.listHTML();
-  };
-}
+})(this);

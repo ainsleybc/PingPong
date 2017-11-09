@@ -1,18 +1,21 @@
+body {
+  background-color: #757780;
+}
 .hidden {
   display: none;
 }
 
 .describe_block{
-  color: blue;
+  color: #D2CCA1;
   font-family: Arial Black;
 }
 
 .passes{
-  color: #7fff00;
+  color: #C8FFBE;
   font-family: Arial;
 }
 
 .fails{
-  color: #ff0000;
+  color: #89023E;
   font-family: Arial;
 }
