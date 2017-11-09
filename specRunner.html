@@ -4,26 +4,27 @@
       <link rel="stylesheet" href="testing/lib/css/styles.css">
   </head>
   <body>
-
     <div id="test-div" class="hidden"></div>      
     <section id="spec-runner"></section>
     
     <!-- framework -->
     <script src="testing/lib/src/framework.js"></script>    
-    <script src="testing/lib/src/describe.js"></script>     
+    <script src="testing/lib/src/describe.js"></script>
     <script src="testing/lib/src/it.js"></script>
-    <script src="testing/lib/src/expect.js"></script> 
+    <script src="testing/lib/src/expect.js"></script>
 
     <!-- source files -->
     <script src="src/note.js"></script>
     <script src="src/notepad.js"></script>
-    <script src="src/notepadController.js"></script>    
+    <script src="src/notepadController.js"></script>
+
+    <!-- script to load before html testingHTML -->
+    <script src="spec/testingHTML/submitNote.js"></script>
 
     <!-- specs -->
     <script src="spec/notepadSpec.js"></script>
     <script src="spec/noteSpec.js"></script>
-    <script src="spec/notepadControllerSpec.js"></script>    
+    <script src="spec/notepadControllerSpec.js"></script>
     <script src="spec/webSpec.js"></script>
-    
   </body>
 </html>
