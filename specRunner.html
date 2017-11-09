@@ -6,9 +6,16 @@
 </head>
 
 <body>
-  <div id="test-div" class="hidden"></div>
+  <header id="header">
+    <p>PingPong</p>
+    <p id="test-info">
+      <span id='total'></span>
+      <span id='failed'></span>      
+    </p>
+  </header>
   <section id="spec-runner"></section>
-
+  
+  <div id="test-div" class="hidden"></div>
   <!-- framework -->
   <script src="testing/lib/src/framework.js"></script>
   <script src="testing/lib/src/describe.js"></script>
