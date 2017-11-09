@@ -1,14 +1,11 @@
-(function(exports) {
+(function (exports) {
+  
+  exports.describe = function (string, callback) {
 
-  function describe(string, callback) {
-
-    var container = document.getElementById('spec-runner');
-
-    container.innerHTML += "<article><p class='describe_block'>" + string + "</p></article>";
+    output.startDescribe(string);
     callback();
+    output.endDescribe();
 
   }
-
-  exports.describe = describe;
 
 })(this);

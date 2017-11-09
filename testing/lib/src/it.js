@@ -1,19 +1,15 @@
 (function (exports) {
 
-  function it(string, callback) {
-
-    var container = document.getElementById('spec-runner').lastChild;
+  exports.it = function (string, callback) {
 
     try {
       callback();
-      container.innerHTML += "<div><p class='passes'>" + string + "</p></div>";
+      output.addPassingTest(string);
     }
     catch (err) {
-      container.innerHTML += "<div><p class='fails'>" + err + "</p></div>";
-    }
+      output.addFailedTest(string, err.stack);
+    };
 
   };
-
-  exports.it = it;
 
 })(this);
