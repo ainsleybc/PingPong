@@ -6,14 +6,14 @@
 
     function renderFullList() {
       var html = '<ol>';
-      for (var i = 0; i < notepad.notes().length; i++) {
-        html += ('<li><a id="note' + i + '" href="#' + i + '">' + notepad.notes()[i].abbreviation() + '</a></li>');
+      for (var i = 1; i < notepad.notes().length + 1; i++) {
+        html += ('<li><a id="note' + i + '" href="#' + i + '">' + notepad.notes()[i-1].abbreviation() + '</a></li>');
       }
       return html + '</ol>';
     }
 
-    function renderSingleNote(index) {
-      var noteText = notepad.notes()[index].contents();
+    function renderSingleNote(number) {
+      var noteText = notepad.notes()[number-1].contents();
       return '<textarea class="text-edit" id="my-text">' + noteText + '</textarea>';
     }
 

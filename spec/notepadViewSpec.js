@@ -10,7 +10,7 @@ describe('notepadView', function() {
     var view = new NotepadView(notepad);
     var note = new Note('ThisIsTwentySevenCharacters');
     notepad.addNote(note);
-    expect(convertPlainText(view.renderFullList())).toInclude(convertPlainText('<ol><li><a id="note0" href="#0">ThisIsTwentySeven...</a></li></ol>'));
+    expect(convertPlainText(view.renderFullList())).toInclude(convertPlainText('<ol><li><a id="note1" href="#1">ThisIsTwentySeven...</a></li></ol>'));
   });
 
   it('renders the HTML for a single note', function() {
@@ -18,7 +18,7 @@ describe('notepadView', function() {
     var view = new NotepadView(notepad);
     var note = new Note('ThisIsTwentySevenCharacters');
     notepad.addNote(note);
-    expect(view.renderSingleNote(0)).toEqual('<textarea class="text-edit" id="my-text">' + note.contents() + '</textarea>');
+    expect(view.renderSingleNote(1)).toEqual('<textarea class="text-edit" id="my-text">' + note.contents() + '</textarea>');
   });
 
   it

@@ -8,7 +8,9 @@ describe('notepadController', function() {
 
   it('renders the page & main section', function() {
     var notepadController = new NotepadController('test-div');
-    expect(document.getElementById('test-div').innerHTML).toInclude('<nav id="sidebar"></nav><section id="main"><textarea class="text-edit" id="my-text"></textarea></section>');
+    var container = document.getElementById('test-div');
+    expect(container.innerHTML).toInclude('<nav id="sidebar"></nav><section id="main"><textarea class="text-edit" id="my-text"></textarea></section>');
+    container.innerHTML = '';
   });
 
   describe('renderCreateNoteBox', function() {
@@ -18,7 +20,7 @@ describe('notepadController', function() {
       var testDouble = document.getElementById('main');
       var form = '<textarea class="text-edit" id="my-text"></textarea>';
       expect(convertPlainText(testDouble.innerHTML)).toEqual(convertPlainText(form));
-      testDouble.innerHTML = '';
+      document.getElementById('test-div').innerHTML = '';
     });
 
   });
@@ -39,20 +41,20 @@ describe('notepadController', function() {
 
   it('should display a single note when clicked on', function() {
     var notepadController = new NotepadController('test-div');
-
     var textBox = document.getElementById('my-text');
-    textBox.textContent = 'hi, my name is Hugo';
+    textBox.value = 'hi, my name is Hugo';
     notepadController.saveNote();
-    notepadController.renderCreateNoteBox();
     textBox = document.getElementById('my-text');
-    textBox.textContent = 'hi, my name is Jon';
+    textBox.value = 'hi, my name is Jon';
     notepadController.saveNote();
-    var link = document.getElementById('note0');
-    link.click();
-    textBox = document.getElementById('my-text');    
-    console.log(textBox.textContent);
-    expect(textBox.textContent).toInclude('hi, my name is Hugo');
+    document.getElementById('note1').click();
 
+    setTimeout(function() {
+      textBox = document.getElementById('my-text');  
+      expect(textBox.textContent).toInclude('hi, my name is Hugo');
+      document.getElementById('test-div').innerHTML = '';
+    }, 500)      
+    
   });
 
 });

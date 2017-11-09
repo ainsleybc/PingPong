@@ -7,7 +7,7 @@
     var notepad = new Notepad();
     var notepadView = new NotepadView(notepad);
 
-    showNote();
+    addListenerForSingleNote();
     renderPage();
     renderCreateNoteBox();
 
@@ -19,6 +19,7 @@
     function renderCreateNoteBox() {
       var main = document.getElementById('main');
       main.innerHTML = '<textarea class="text-edit" id="my-text"></textarea>';
+      window.location.hash = '#';
     };
 
     function saveNote() {
@@ -26,26 +27,20 @@
       notepad.addNote(new Note(text.value));
       renderSideBar();
       renderCreateNoteBox();
-      window.location.hash = '';
     };
 
-    function showNote() {
-      window.addEventListener('hashchange', showNoteForCurrentPage);
+    function addListenerForSingleNote() {
+      window.addEventListener('hashchange', showSingleNote);
     };
 
-    function showNoteForCurrentPage() {
-      if (window.location.hash !== '') {
-        showSingleNote(getNoteFromUrl(window.location));
-      }
-    };
-
-    function getNoteFromUrl(location) {
+    function getNoteIndexFromUrl(location) {
       return location.hash.split('#')[1];
     };
 
-    function showSingleNote(number) {
+    function showSingleNote() {
       var doc = document.getElementById('main');
-      doc.innerHTML = notepadView.renderSingleNote(number);
+      var noteNumber = getNoteIndexFromUrl(window.location);
+      if (noteNumber > 0) doc.innerHTML = notepadView.renderSingleNote(noteNumber);
     };
 
     function renderSideBar() {
