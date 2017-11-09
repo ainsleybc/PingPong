@@ -1,65 +1,41 @@
-// 'use strict';
+'use strict';
 
 function convertPlainText(content) {
   return content.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
-describe('notepadController', function() {
 
-  it('displays the note creation form', function() {
+describe('notepadController', function () {
+  
+  it('creates a nav bar and main section', function () {
     var notepadController = new NotepadController('test-div');
-    var testDouble = document.getElementById('test-div');
-    var form = '<form><input type="text" id="webnote" name="webnote"><input type="submit" id="add-note" value="add-note"></form>';
-    testDouble.innerHTML = form;
-    expect(convertPlainText(testDouble.innerHTML)).toEqual(convertPlainText(form));
+    expect(document.getElementById('test-div').innerHTML).toInclude('<nav id="navBarText"></nav><section id="main"></section>');
   });
 
-  it('displays a text area when the createNote button is clicked', function() {
-    var notepadController = new NotepadController('test-div');
-    var html = convertPlainText(document.getElementById('test-div').innerHTML);
-    var textArea = convertPlainText('<textarea class="text-edit" id="my-text"></textarea>');
-    expect(html).toEqual(textArea);
+  describe('renderCreateNoteBox', function () {
+
+    it('displays the note input text area', function () {
+      var notepadController = new NotepadController('test-div');
+      var testDouble = document.getElementById('main');
+      var form = '<textarea class="text-edit" id="my-text"></textarea>';
+      notepadController.renderCreateNoteBox();
+      expect(convertPlainText(testDouble.innerHTML)).toEqual(convertPlainText(form));
+      testDouble.innerHTML = '';
+    });
+
   });
 
-  it('adds a new note to the notepad when the submit button is clicked', function() {
-    var notepadController = new NotepadController('test-div');
-    notepadController.createTextArea('test-div');
-    var textBox = document.getElementById('my-text');
-    textBox.value = 'hello my name is canace';
-    expect(textBox.value).toEqual('hello my name is canace');
+  describe('saveNote', function () {
+    
+    it('adds a new note to the notepad', function() {
+      var notepadController = new NotepadController('test-div');
+      notepadController.renderCreateNoteBox();
+      var textBox = document.getElementById('my-text');
+      textBox.value = 'hi, my name is Hugo';
+      notepadController.saveNote();
+      var noteList = document.getElementById('navBarText').innerHTML;
+      expect(noteList).toInclude('hi, my name is Hugo');
+    });
 
-    notepadController.createNote();
-    expect(notepad.notes()[0].contents).toEqual('hello my name is canace');
-  });
-
+  })
 
 });
-
-// describe('saveNote', function () {
-
-//   var testDouble = document.getElementById('test-div');
-//   var form = "<form><input type='text' id='webnote' name='webnote'><input type='submit' id='add-note' value='add-note'></form>";
-
-//   it('saves a note with the given text', function () {
-//     var notepad = new Notepad();
-//     var inputField = document.getElementById("webnote");
-//     inputField.textContent = 'this is a string';
-//     document.getElementById("add-note").click();
-//     expect(notepad.notes()).toInclude('this is a string');
-//   });
-
-// });
-
-// describe('saveNote', function () {
-
-//   var testDouble = document.getElementById('test-div');
-//   var form = "<form><input type='text' id='webnote' name='webnote'><input type='submit' id='add-note' value='add-note'></form>";
-
-//   it('saves a note with the given text', function () {
-//     var notepad = new Notepad();
-//     var inputField = document.getElementById("webnote");
-//     inputField.textContent = 'this is a string';
-//     document.getElementById("add-note").click();
-//     expect(notepad.notes()).toInclude('this is a string');
-//   });
-
-// });

@@ -19,3 +19,11 @@ body {
   color: #89023E;
   font-family: Arial;
 }
+
+article {
+  padding-left: 20px;
+}
+
+article div {
+  padding-left: 20px;
+}
