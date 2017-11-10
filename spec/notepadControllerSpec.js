@@ -6,16 +6,26 @@ function convertPlainText(content) {
 
 describe('notepadController', function() {
 
-  it('renders the page & main section', function() {
+  beforeEach(function () {
+    console.log('This should print 4 times');
+  })
+
+  it('renders the page & main section', function () {
+    console.log('first test');
     var notepadController = new NotepadController('test-div');
     var container = document.getElementById('test-div');
     expect(container.innerHTML).toInclude('<nav id="sidebar"></nav><section id="main"><textarea class="text-edit" id="my-text"></textarea></section>');
     container.innerHTML = '';
   });
 
-  describe('renderCreateNoteBox', function() {
+  describe('renderCreateNoteBox', function () {
+    
+    beforeEach(function () {
+      console.log('this should be once');
+    })
 
-    it('displays the note input text area', function() {
+    it('displays the note input text area', function () {
+    console.log('second test');    
       var notepadController = new NotepadController('test-div');
       var testDouble = document.getElementById('main');
       var form = '<textarea class="text-edit" id="my-text"></textarea>';

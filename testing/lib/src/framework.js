@@ -9,11 +9,10 @@
   var _container = document.getElementById('spec-runner');
   var _stats = document.getElementById('test-info');  
   var _tests = [];
-  var _beforeEachHelpers = [];
 
-  function runTests() {
+  function runSuite() {
     _tests.forEach(function (test) {
-      runBeforeEachHelpers(test[0]);
+      beforeHelpers.runEach(test[0]);
       var string = test[1];
       var callback = test[2];
       try {
@@ -45,8 +44,8 @@
   };
 
   function endDescribe (counter) {
-    runTests();
-    resetBeforeEachHelpers();
+    runSuite();
+    beforeHelpers.resetEach(_describeLevel);
     _describeLevel--;
     _html += '</article>';
     if (_describeLevel === 0) renderPage();
@@ -67,31 +66,15 @@
     _tests.push([_describeLevel, string, callback]);
   };
 
-  function addBeforeEachHelper(callback) {
-    _beforeEachHelpers.push([_describeLevel, callback]);
+  function describeLevel() {
+    return _describeLevel;
   };
 
-  function runBeforeEachHelpers(describeLevel) {
-    var level = describeLevel;
-    _beforeEachHelpers.forEach(function (helper) {
-      var callback = helper[1];
-      if (helper[0] <= level) callback();
-    });
-  };
-  
-  function resetBeforeEachHelpers() {
-    for (var i = 0; i < _beforeEachHelpers.length; i++) {
-      if (_beforeEachHelpers[i][0] === _describeLevel) {
-        _beforeEachHelpers.splice(i, 1);
-      }
-    }
-  }
-  
   exports.output = {
     startDescribe: startDescribe,
     endDescribe: endDescribe,
+    describeLevel: describeLevel,
     addTest: addTest,
-    addBeforeEachHelper: addBeforeEachHelper
   };
 
 })(this);
