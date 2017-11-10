@@ -11,8 +11,9 @@
   var _tests = [];
 
   function runSuite() {
+    helpers.run('before', describeLevel());
     _tests.forEach(function (test) {
-      beforeHelpers.runEach(test[0]);
+      helpers.run('beforeEach', test[0]);
       var string = test[1];
       var callback = test[2];
       try {
@@ -22,8 +23,9 @@
       catch (err) {
         addFailedTest(string, err.stack);
       };
-      afterHelpers.runEach(test[0]);      
+      helpers.run('afterEach', test[0]);      
     })
+    helpers.run('after', describeLevel());  
   };
   
   function renderPage() {
@@ -46,8 +48,7 @@
 
   function endDescribe (counter) {
     runSuite();
-    beforeHelpers.resetEach(_describeLevel);
-    afterHelpers.resetEach(_describeLevel);    
+    helpers.reset(_describeLevel);    
     _describeLevel--;
     _html += '</article>';
     if (_describeLevel === 0) renderPage();
