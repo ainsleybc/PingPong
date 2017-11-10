@@ -6,30 +6,45 @@
   var _describeLevel = 0;
   var _passedTestCount = 0;
   var _failedTestCount = 0;
-  var _container = document.getElementById('spec-runner');
-  var _stats = document.getElementById('test-info');  
   var _tests = [];
+  
+  function addTest (string, callback) {
+    _tests.push([_describeLevel, string, callback]);
+  };
+  
+  function executeTest (string, callback) {
+    try {
+      callback();
+      addPassingTest(string);
+    }
+    catch (err) {
+      addFailedTest(string, err.stack);
+    };
+  }
+  
+  function addPassingTest (text) {
+    _html += "<div class='passes'><p>it " + text + "</p></div>";
+    _passedTestCount++;
+  };
 
-  function runSuite() {
+  function addFailedTest (text, err) {
+    _html += "<div class='fails'><p>it " + text + "</p><p>" + err + "</p></div>";
+    _failedTestCount++;
+  };
+  
+  function runSuite () {
     helpers.run('before', describeLevel());
     _tests.forEach(function (test) {
       helpers.run('beforeEach', test[0]);
-      var string = test[1];
-      var callback = test[2];
-      try {
-        callback();
-        addPassingTest(string);
-      }
-      catch (err) {
-        addFailedTest(string, err.stack);
-      };
+      executeTest(test[1], test[2]);
       helpers.run('afterEach', test[0]);      
     })
     helpers.run('after', describeLevel());  
   };
   
-  function renderPage() {
-    _container.innerHTML += _html;
+  function renderPage () {
+    var container = document.getElementById('spec-runner');
+    container.innerHTML += _html;
     _html = '';
     renderStats();
   };
@@ -48,28 +63,14 @@
 
   function endDescribe (counter) {
     runSuite();
-    helpers.reset(_describeLevel);    
+    helpers.reset(describeLevel());    
     _describeLevel--;
     _html += '</article>';
-    if (_describeLevel === 0) renderPage();
+    if (describeLevel() === 0) renderPage();
     _tests = [];
   };
-  
-  function addPassingTest (text) {
-    _html += "<div class='passes'><p>it " + text + "</p></div>";
-    _passedTestCount++;
-  };
 
-  function addFailedTest (text, err) {
-    _html += "<div class='fails'><p>it " + text + "</p><p>" + err + "</p></div>";
-    _failedTestCount++;
-  };
-  
-  function addTest (string, callback) {
-    _tests.push([_describeLevel, string, callback]);
-  };
-
-  function describeLevel() {
+  function describeLevel () {
     return _describeLevel;
   };
 

@@ -64,20 +64,18 @@
   };
   
   function reset(level) {
-    var level = level;
-    var type = type;
     _before = [];
-    for (var i = 0; i < _beforeEach.length; i++) {
-      if (_beforeEach[i][0] === level) {
-        _beforeEach.splice(i, 1);
+    clearHelperSet(_beforeEach, level);
+    clearHelperSet(_afterEach, level);
+  };
+
+  function clearHelperSet(helper, level) {
+    for (var i = 0; i < helper.length; i++) {
+      if (helper[i][0] === level) {
+        helper.splice(i, 1);
       }
     }
-    for (var i = 0; i < _afterEach.length; i++) {
-      if (_afterEach[i][0] === level) {
-        _afterEach.splice(i, 1);
-      }
-    }
-  }
+  };
 
   exports.helpers = {
     run: run,

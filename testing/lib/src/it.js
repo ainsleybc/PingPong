@@ -7,5 +7,5 @@
     output.addTest(string, callback)
 
   };
-
+  
 })(this);
