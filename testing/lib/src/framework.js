@@ -22,6 +22,7 @@
       catch (err) {
         addFailedTest(string, err.stack);
       };
+      afterHelpers.runEach(test[0]);      
     })
   };
   
@@ -46,6 +47,7 @@
   function endDescribe (counter) {
     runSuite();
     beforeHelpers.resetEach(_describeLevel);
+    afterHelpers.resetEach(_describeLevel);    
     _describeLevel--;
     _html += '</article>';
     if (_describeLevel === 0) renderPage();
