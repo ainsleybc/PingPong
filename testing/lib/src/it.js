@@ -1,3 +1,5 @@
+'use strict';
+
 (function (exports) {
 
   exports.it = function (string, callback) {

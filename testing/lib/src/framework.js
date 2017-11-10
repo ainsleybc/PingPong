@@ -2,18 +2,20 @@
 
 (function (exports) {
    
-  var _html = ''
-  var _describeCounter = 0;
+  var _html = '';
+  var _describeLevel = 0;
   var _passedTestCount = 0;
   var _failedTestCount = 0;
   var _container = document.getElementById('spec-runner');
   var _stats = document.getElementById('test-info');  
   var _tests = [];
+  var _beforeEachHelpers = [];
 
-  function runTests () {
+  function runTests() {
     _tests.forEach(function (test) {
-      var string = test[0];
-      var callback = test[1];
+      runBeforeEachHelpers(test[0]);
+      var string = test[1];
+      var callback = test[2];
       try {
         callback();
         addPassingTest(string);
@@ -22,7 +24,6 @@
         addFailedTest(string, err.stack);
       };
     })
-    _tests = [];
   };
   
   function renderPage() {
@@ -36,18 +37,20 @@
     var failed = document.getElementById('failed');
     total.textContent = _passedTestCount + _failedTestCount + ' tests,';
     failed.textContent = _failedTestCount + ' failures';
-  }
+  };
 
   function startDescribe (text, counter) {
-    _describeCounter++;
+    _describeLevel++;
     _html += '<article><p class="describe_block">' + text + '</p>';
   };
 
   function endDescribe (counter) {
     runTests();
-    _describeCounter--;
+    resetBeforeEachHelpers();
+    _describeLevel--;
     _html += '</article>';
-    if (_describeCounter === 0) renderPage();
+    if (_describeLevel === 0) renderPage();
+    _tests = [];
   };
   
   function addPassingTest (text) {
@@ -61,13 +64,34 @@
   };
   
   function addTest (string, callback) {
-    _tests.push([string, callback]);
+    _tests.push([_describeLevel, string, callback]);
   };
 
+  function addBeforeEachHelper(callback) {
+    _beforeEachHelpers.push([_describeLevel, callback]);
+  };
+
+  function runBeforeEachHelpers(describeLevel) {
+    var level = describeLevel;
+    _beforeEachHelpers.forEach(function (helper) {
+      var callback = helper[1];
+      if (helper[0] <= level) callback();
+    });
+  };
+  
+  function resetBeforeEachHelpers() {
+    for (var i = 0; i < _beforeEachHelpers.length; i++) {
+      if (_beforeEachHelpers[i][0] === _describeLevel) {
+        _beforeEachHelpers.splice(i, 1);
+      }
+    }
+  }
+  
   exports.output = {
     startDescribe: startDescribe,
     endDescribe: endDescribe,
-    addTest
+    addTest: addTest,
+    addBeforeEachHelper: addBeforeEachHelper
   };
 
 })(this);
