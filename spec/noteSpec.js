@@ -14,4 +14,10 @@ describe('notes', function() {
     expect(note.abbreviation()).toEqual('12345678910111213...');
   });
 
+  it('updates the contents', function() {
+    var note = new Note('yay');
+    note.updateContents('great content');
+    expect(note.contents()).toEqual('great content');
+  });
+
 })

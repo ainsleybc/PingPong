@@ -15,9 +15,14 @@
       return _content;
     }
 
+    function updateContents(newContent) {
+      _content = newContent;
+    }
+
     return {
       contents: contents,
-      abbreviation: abbreviation
+      abbreviation: abbreviation,
+      updateContents: updateContents
     };
 
   };
