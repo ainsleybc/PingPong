@@ -1,27 +1,18 @@
-## Ainsley, Canace and Hugo's notes app!
+PingPong
+------
 
-## Go Team HAC!
+A simple Javascript testing framework & library modelled after Jasmine.
 
-Note pad
----
-As a note-taker,
-So I can see notes I may have written,
-I want to see a list of notes
+This was forked from the original, encapsulating project to publish independantly
 
-Notes
----
-As a user,
-So I can remember things
-I wan to be able to create notes
+Features
+-----
 
-As a user
-So I can easily read notes,  
-I want to see a whole note on a page
 
-As a user,
-So I can easily find notes,
-I want a 20 character description to each note
+Usage
+-----
+```
 
-As a user,
-So I can easily find notes,
-I want to see these descriptions in the view  
+
+
+ ```
