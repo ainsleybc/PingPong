@@ -6,10 +6,6 @@ function convertPlainText(content) {
 
 describe('notepadController', function() {
 
-  beforeEach(function () {
-    console.log('This should print 4 times');
-  })
-
   it('renders the page & main section', function () {
     console.log('first test');
     var notepadController = new NotepadController('test-div');
@@ -19,10 +15,6 @@ describe('notepadController', function() {
   });
 
   describe('renderCreateNoteBox', function () {
-    
-    beforeEach(function () {
-      console.log('this should be once');
-    })
 
     it('displays the note input text area', function () {
     console.log('second test');    
