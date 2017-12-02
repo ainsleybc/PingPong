@@ -33,7 +33,7 @@ describe('someClass', ()=> {
   describe('someFunction', ()=> {
 
     it('does something', ()=> {
-      expect('someFunction').toEqual('someValue);
+      expect('someFunction').toEqual('someValue');
     })
 
   })
