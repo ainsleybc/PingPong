@@ -23,7 +23,7 @@ Usage
 - update `specRunner.html` to emulate source and spec files
 - open `specRunner.html` to run tests
 
-```
+```javascript
 describe('someClass', ()=> {
 
   beforeEach(()=> {
